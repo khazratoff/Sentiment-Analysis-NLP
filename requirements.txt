@@ -1,0 +1,7 @@
+nltk==3.8.1
+pyspellchecker==0.8.1
+pandas==2.0.3
+numpy==1.23.5
+tensorflow==2.15.0
+scikit-learn==1.2.2
+requests==2.31.0

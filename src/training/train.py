@@ -25,6 +25,8 @@ from nltk.stem import WordNetLemmatizer
 #Downloading nltk packages 
 nltk.download('wordnet')
 nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('stopwords')
 
 #Configuring warnings
 warnings.filterwarnings("ignore") 
@@ -124,12 +126,12 @@ def save_clean_data():
         os.makedirs(clean_data_path)
         clean_train_data_path = os.path.join(clean_data_path,'clean_train.csv')
         sentiment.to_csv(clean_train_data_path,index=False)
-        logging.info(f'Cleaned train data saved successfully!\n=================================================\n')
+        logging.info(f'Cleaned train data saved successfully!\n===============================================================\n')
 
 
 def train_model():
     '''Perfoms word embedding, trains the model and evaluates it'''
-    logging.info(f'Step 2 | Training model\n=================================================\n')
+    logging.info(f'Step 2 | Training model\n=================================================================\n')
     logging.info(f'Encoding labels...')
     sentiment['sentiment'] = sentiment['sentiment'].replace({'positive': 1, 'negative': 0})
 

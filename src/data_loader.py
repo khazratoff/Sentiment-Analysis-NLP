@@ -4,7 +4,6 @@ import sys
 import requests
 import shutil
 from zipfile import ZipFile
-import logging
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(ROOT_DIR))
@@ -42,7 +41,6 @@ def load_data(urls:list):
                 shutil.copy2(source,dest)
                 shutil.rmtree(os.path.join(DATA_PATH,'final_project_test_dataset'))
             flag = False
-            print(f'Data downloaded and extracted to {DATA_PATH}.')
         else:
             print(f'Failed to download data. Status code: {response.status_code}')
 
