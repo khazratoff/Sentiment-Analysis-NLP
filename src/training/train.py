@@ -6,24 +6,25 @@ import os
 import sys
 import logging
 import warnings
-import string
 import re
 import joblib
 
 import numpy as np
 import pandas as pd
 
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-from sklearn.metrics import classification_report,f1_score,recall_score,precision_score,accuracy_score 
-from sklearn.linear_model import LogisticRegression         
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics import f1_score,recall_score,precision_score,accuracy_score 
+from sklearn.linear_model import LogisticRegression     
+from sklearn.model_selection import train_test_split    
 
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords, wordnet
-from nltk.stem import PorterStemmer, WordNetLemmatizer
+from nltk.stem import WordNetLemmatizer
 
-
+#Downloading nltk packages 
+nltk.download('wordnet')
+nltk.download('punkt')
 
 #Configuring warnings
 warnings.filterwarnings("ignore") 
@@ -49,7 +50,7 @@ sentiment = pd.read_csv(os.path.join(DATA_PATH,'raw/train.csv'))
 
 
 #Preprocessing data
-logging.info(f"Step 1 | Preprocessing data\n=============================================\n")
+logging.info(f"Step 1 | Preprocessing data\n=======================================================================\n")
 
 logging.info(f"1.Lower casing...")
 #lower casing
@@ -146,9 +147,9 @@ def train_model():
     predictions = model.predict(X_test_unigram)
     log_reg_acc = accuracy_score(y_test, predictions)
     logging.info(f"Model Accuracy: {log_reg_acc * 100:.2f}%")
-    logging.info(f"Precision: {precision_score(y_test,predictions)}")
-    logging.info(f"Recall: {recall_score(y_test,predictions)}")
-    logging.info(f"F1 score: {f1_score(y_test,predictions)}")
+    logging.info(f"Precision: {precision_score(y_test,predictions)* 100:.2f}%")
+    logging.info(f"Recall: {recall_score(y_test,predictions)* 100:.2f}%")
+    logging.info(f"F1 score: {f1_score(y_test,predictions)* 100:.2f}%")
     return model
 
 
