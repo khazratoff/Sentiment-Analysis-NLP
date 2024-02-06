@@ -85,7 +85,7 @@ Potential applications of the model in a business context and the value it provi
 - **Content Recommendation Improvement:**
   - Platforms providing movie recommendations can significantly improve user satisfaction by using sentiment analysis to refine and optimize their content recommendation algorithms.
 
----
+----
 
 # Technical overview and instructions
 
@@ -98,7 +98,7 @@ The training phase of this project can be done by running `src/training/train.py
 ```bash
 docker build -f ./src/training/Dockerfile  --build-arg MODEL_NAME=<your_model_name.joblib> -t training_image .
 ```
-Replace `model_name` whatever you want for the name of your model but make sure to give `.joblib` extension (for keras model) to it.
+Replace `model_name` whatever you want for the name of your model but make sure to give `.joblib` extension to it.
 - After successfull built you have to run the container that actually trains the model, and mounts `outputs/models` and `/data` folders on container to your local machine by the following command:
 ```bash
 docker run -v $(pwd)/outputs/models:/app/outputs/models -v $(pwd)/data:/app/data training_image
