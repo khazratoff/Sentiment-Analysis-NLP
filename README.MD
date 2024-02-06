@@ -108,7 +108,7 @@ To handle this instead of using `pwd` write your project path by hand like:`/Use
 In the shell (terminal, powershell) you can see the training phase with `logging.info` created by the script along with model's `accuracy` score.
 Make sure that `train.csv` and `test.csv` created in `data/raw` and 'clean_train.csv' in 'data/processed' folder along with your model in `outputs/models` folder.
 ## Inference
-Once a model has been trained, it can be used to make predictions on new data in the inference stage. The inference stage is implemented in `src/inference/inference_run.py.
+Once a model has been trained, it can be used to make predictions on new data in the inference stage. The inference stage is implemented in `src/inference/inference_run.py`.
 - Build the inference Docker image:
 ```bash
   docker build -f ./src/inference/Dockerfile -t inference_image .
