@@ -12,15 +12,14 @@ This Data Science report aims to analyze the 50k Movie Reviews dataset, includin
   - Has 2 features `review` and `sentiment` (dtype:str)
   - No any missing values.
   - Text length distribution.
-  ![text_length_dist](outputs/figures/txt_len_dist.jpg)
-
+  - ![](outputs/figures/text_len_dist.png)
 - **Class Distribution:**
   - Behaviour on reviews equally distributed 25k positive and same for negative.
-  ![Pos_neg_dist](outputs/figures/sent_dist.jpg)
+  ![](outputs/figures/posnegdist.png)
   - Word frequencies on positive reviews before cleaning and preprocessing. (by WordCloud)
-  ![wordcloud_bef_prepro_pos](outputs/figures/wordcloud_before_preprocess_pos.jpg)
+![](outputs/figures/wcpos.png)
   - Same for negative behavour.
-  ![wordcloud_bef_prepro_neg](outputs/figures/wordcloud_before_preprocess_neg.jpg)
+ ![](outputs/figures/wcneg.png)
 
 - **Basic Text Cleaning:**
     - Sentences lower cased
