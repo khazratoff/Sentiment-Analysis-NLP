@@ -86,3 +86,39 @@ Potential applications of the model in a business context and the value it provi
   - Platforms providing movie recommendations can significantly improve user satisfaction by using sentiment analysis to refine and optimize their content recommendation algorithms.
 
 ---
+
+# Technical overview and instructions
+
+## Data:
+Data can be loaded with `src/data_loader.py` script to the `data/raw` directory via building Docker training image. Training script will automatically cleans and preprocesses the data and saves `data/processed` directory.
+## Training:
+The training phase of this project can be done by running `src/training/train.py` script.
+<br>To train the model using Docker following insturctions should be done: 
+- Build the training Docker image using this command:
+```bash
+docker build -f ./src/training/Dockerfile  --build-arg MODEL_NAME=<your_model_name.joblib> -t training_image .
+```
+Replace `model_name` whatever you want for the name of your model but make sure to give `.joblib` extension (for keras model) to it.
+- After successfull built you have to run the container that actually trains the model, and mounts `outputs/models` and `/data` folders on container to your local machine by the following command:
+```bash
+docker run -v $(pwd)/outputs/models:/app/outputs/models -v $(pwd)/data:/app/data training_image
+```
+If you get an error, probably it is because there are some whitespaces in your printed working directory(pwd).
+To handle this instead of using `pwd` write your project path by hand like:`/Users/john/desktop/DS-final-task`.
+In the shell (terminal, powershell) you can see the training phase with `logging.info` created by the script along with model's `accuracy` score.
+Make sure that `train.csv` and `test.csv` created in `data/raw` and 'clean_train.csv' in 'data/processed' folder along with your model in `outputs/models` folder.
+## Inference
+Once a model has been trained, it can be used to make predictions on new data in the inference stage. The inference stage is implemented in inference/run.py.
+- Build the inference Docker image:
+```bash
+  docker build -f ./src/inference/Dockerfile -t inference_image .
+```
+- Run the inference Docker container with following command:
+``` bash
+docker run -v $(pwd)/outputs/predictions:/app/outputs/predictions inference_image
+```
+Make sure you don't get any errors related to your pathname (pwd). After succesfull run, inference phase can be shown in shell, and what's more important is that `/predictions` folder in container will be mounted on your local `/predictions` folder which keeps result of the models prediction (csv file)  on inference data.
+## What's more
+- Some exceptions are included in some problematic parts in the code.<br> *Looking forward to get your feedback, and if you don't get any desired results please let me know.*
+
+
