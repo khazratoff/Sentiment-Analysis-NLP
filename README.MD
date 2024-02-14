@@ -90,7 +90,7 @@ Potential applications of the model in a business context and the value it provi
 # Technical overview and instructions
 
 ## Data:
-Data can be loaded with `/src/data_loader.py` script to the `/data/raw` directory via building Docker training image. Training script will automatically cleans and preprocesses the data and saves `/data/processed` directory.
+Data can be loaded with `/src/data_loader.py` script to the `/data/raw` directory via building Docker image. Training script will automatically cleans and preprocesses the data and saves `/data/processed` directory.
 ## Training:
 The training phase of this project can be done by running `/src/training/train.py` script.
 <br>To train the model using Docker following insturctions should be done: 
